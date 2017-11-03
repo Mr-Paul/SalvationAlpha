@@ -10,7 +10,7 @@ public class NPCController : MonoBehaviour {
 	private NavMeshAgent nav;
 	private GameObject closest;
 	private float distance;
-	private Vector3 lastPosition;
+	//private Vector3 lastPosition;
 
 	void Start () {
 		nav = GetComponent<NavMeshAgent> ();
@@ -32,9 +32,14 @@ public class NPCController : MonoBehaviour {
 			}
 			nav.isStopped = false;
 			nav.SetDestination (closest.transform.position);
+			if (nav.remainingDistance <= nav.stoppingDistance && !nav.pathPending) {
+				if (nav.velocity.sqrMagnitude == 0.0f) {
+					Destroy (closest);
+				}
+			}
 		} else {
 			nav.isStopped = true;
 		}
-		lastPosition = transform.position;
+		//lastPosition = transform.position;
 	}
 }
