@@ -10,12 +10,14 @@ public class NPCController : MonoBehaviour {
 	private NavMeshAgent nav;
 	private GameObject closest;
 	private float distance;
+	private Vector3 lastPosition;
 
 	void Start () {
 		nav = GetComponent<NavMeshAgent> ();
 	}
 	
 	void Update () {
+		
 		resources = GameObject.FindGameObjectsWithTag ("Resource");
 		if (resources.Length > 0) {
 			closest = null;
@@ -33,5 +35,6 @@ public class NPCController : MonoBehaviour {
 		} else {
 			nav.isStopped = true;
 		}
+		lastPosition = transform.position;
 	}
 }
