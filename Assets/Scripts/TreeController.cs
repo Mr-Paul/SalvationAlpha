@@ -8,12 +8,16 @@ public class TreeController : MonoBehaviour {
 	private float proximity;
 	private GameObject player;
 	public GameObject indicator;
+	public string type;
+
 	private GameObject thisIndicator;
+	private int resources;
 
 	void Start () {
 		indicatorActive = false;
 		proximity = 3;
 		player = GameObject.FindGameObjectWithTag ("Player");
+		resources = 100;
 	}
 	
 	void Update () {
@@ -31,5 +35,9 @@ public class TreeController : MonoBehaviour {
 				indicatorActive = false;
 			}
 		}
+	}
+
+	public string GetResourceType () {
+		return type;
 	}
 }

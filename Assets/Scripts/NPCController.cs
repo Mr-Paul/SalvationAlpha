@@ -10,10 +10,20 @@ public class NPCController : MonoBehaviour {
 	private NavMeshAgent nav;
 	private GameObject closest;
 	private float distance;
+	private GameController gameController;
 	//private Vector3 lastPosition;
 
 	void Start () {
 		nav = GetComponent<NavMeshAgent> ();
+		GameObject gameControllerObject = GameObject.FindWithTag ("GameController");
+		if (gameControllerObject != null)
+		{
+			gameController = gameControllerObject.GetComponent <GameController>();
+		}
+		if (gameController == null)
+		{
+			Debug.Log ("Cannot find 'GameController' script");
+		}
 	}
 	
 	void Update () {
@@ -35,6 +45,7 @@ public class NPCController : MonoBehaviour {
 			if (nav.remainingDistance <= nav.stoppingDistance && !nav.pathPending) {
 				if (nav.velocity.sqrMagnitude == 0.0f) {
 					Destroy (closest);
+					gameController.ResourceChange ("wood", 100);
 				}
 			}
 		} else {

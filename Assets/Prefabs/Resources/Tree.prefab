@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   indicator: {fileID: 1988067412053550, guid: 74a377f872a19a54495a52a739b00bf3, type: 2}
+  type: wood
 --- !u!136 &136708686958903776
 CapsuleCollider:
   m_ObjectHideFlags: 1
