@@ -8,12 +8,13 @@ public class TreeController : MonoBehaviour {
 	private float proximity;
 	private GameObject player;
 	public GameObject indicator;
-	public string type;
+	private string type;
 
 	private GameObject thisIndicator;
 	private int resources;
 
 	void Start () {
+		type = "wood";
 		indicatorActive = false;
 		proximity = 3;
 		player = GameObject.FindGameObjectWithTag ("Player");

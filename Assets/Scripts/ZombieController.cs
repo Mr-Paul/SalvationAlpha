@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class NPCController : MonoBehaviour {
+public class ZombieController : MonoBehaviour {
 
-	private Vector3 myPosition;
-	private GameObject[] resources;
-	private NavMeshAgent nav;
-	private GameObject closest;
-	private float distance;
-	private GameController gameController;
-	//private Vector3 lastPosition;
+	GameObject[] survivors;
+	NavMeshAgent nav;
+	GameObject closest;
+	float distance;
+	GameController gameController;
 
+	// Use this for initialization
 	void Start () {
 		nav = GetComponent<NavMeshAgent> ();
 		GameObject gameControllerObject = GameObject.FindWithTag ("GameController");
@@ -26,17 +25,17 @@ public class NPCController : MonoBehaviour {
 		}
 	}
 	
+	// Update is called once per frame
 	void Update () {
-		
-		resources = GameObject.FindGameObjectsWithTag ("Resource");
-		if (resources.Length > 0) {
+		survivors = GameObject.FindGameObjectsWithTag ("Survivor");
+		if (survivors.Length > 0) {
 			closest = null;
 			distance = Mathf.Infinity;
-			foreach (GameObject resource in resources) {
-				Vector3 diff = resource.transform.position - transform.position;
+			foreach (GameObject survivor in survivors) {
+				Vector3 diff = survivor.transform.position - transform.position;
 				float currDistance = diff.sqrMagnitude;
 				if (currDistance < distance) {
-					closest = resource;
+					closest = survivor;
 					distance = currDistance;
 				}
 			}
@@ -45,12 +44,10 @@ public class NPCController : MonoBehaviour {
 			if (nav.remainingDistance <= nav.stoppingDistance && !nav.pathPending) {
 				if (nav.velocity.sqrMagnitude == 0.0f) {
 					Destroy (closest);
-					gameController.ResourceChange ("wood", 100);
 				}
 			}
 		} else {
 			nav.isStopped = true;
 		}
-		//lastPosition = transform.position;
 	}
 }

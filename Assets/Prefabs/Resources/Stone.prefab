@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33985866700130256}
   - component: {fileID: 65874576196273782}
   - component: {fileID: 23199869204023466}
-  - component: {fileID: 114356592752607054}
+  - component: {fileID: 114688324819716582}
   m_Layer: 0
   m_Name: Stone
   m_TagString: Resource
@@ -96,7 +96,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114356592752607054
+--- !u!114 &114688324819716582
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -104,7 +104,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1931352400812814}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24e0f97323c15034e993a2dcfca3c986, type: 3}
+  m_Script: {fileID: 11500000, guid: 80b7e9dbd9575524e91364e4cdd33a60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  indicator: {fileID: 1988067412053550, guid: 74a377f872a19a54495a52a739b00bf3, type: 2}
+  resourceType: stone

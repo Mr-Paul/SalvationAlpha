@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33124775305949170}
   - component: {fileID: 136107603200618138}
   - component: {fileID: 23472608875786054}
-  - component: {fileID: 114978263531597866}
+  - component: {fileID: 114914559812833408}
   m_Layer: 0
   m_Name: Barrel
   m_TagString: Resource
@@ -84,7 +84,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1052904647857376}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114978263531597866
+--- !u!114 &114914559812833408
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -92,10 +92,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1052904647857376}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24e0f97323c15034e993a2dcfca3c986, type: 3}
+  m_Script: {fileID: 11500000, guid: 80b7e9dbd9575524e91364e4cdd33a60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  indicator: {fileID: 1988067412053550, guid: 74a377f872a19a54495a52a739b00bf3, type: 2}
+  resourceType: metal
 --- !u!136 &136107603200618138
 CapsuleCollider:
   m_ObjectHideFlags: 1
