@@ -10,9 +10,12 @@ public class ZombieController : MonoBehaviour {
 	GameObject closest;
 	float distance;
 	GameController gameController;
+	Animator anim;
+	public float attackRange;
 
 	// Use this for initialization
 	void Start () {
+		anim = GetComponent<Animator> ();
 		nav = GetComponent<NavMeshAgent> ();
 		GameObject gameControllerObject = GameObject.FindWithTag ("GameController");
 		if (gameControllerObject != null)
@@ -27,6 +30,7 @@ public class ZombieController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		bool attacking = false;
 		survivors = GameObject.FindGameObjectsWithTag ("Survivor");
 		if (survivors.Length > 0) {
 			closest = null;
@@ -41,13 +45,18 @@ public class ZombieController : MonoBehaviour {
 			}
 			nav.isStopped = false;
 			nav.SetDestination (closest.transform.position);
-			if (nav.remainingDistance <= nav.stoppingDistance && !nav.pathPending) {
-				if (nav.velocity.sqrMagnitude == 0.0f) {
-					Destroy (closest);
-				}
+			if ((closest.transform.position - transform.position).sqrMagnitude < attackRange) {
+				attacking = true;
+				//Destroy (closest);
 			}
 		} else {
 			nav.isStopped = true;
+			anim.SetTrigger ("Die");
 		}
+		Attacking (attacking);
+	}
+
+	void Attacking (bool attacking) {
+		anim.SetBool ("IsAttacking", attacking);
 	}
 }
